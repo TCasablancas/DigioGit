@@ -99,12 +99,8 @@
 		C2F249422756C8CB005C6024 /* DigioTest */ = {
 			isa = PBXGroup;
 			children = (
-				C2F249432756C8CB005C6024 /* AppDelegate.swift */,
-				C2F249452756C8CB005C6024 /* SceneDelegate.swift */,
+				C2F249732756CAD5005C6024 /* Common */,
 				C2F249472756C8CB005C6024 /* ViewController.swift */,
-				C2F249492756C8CB005C6024 /* Main.storyboard */,
-				C2F2494C2756C8D4005C6024 /* Assets.xcassets */,
-				C2F2494E2756C8D4005C6024 /* LaunchScreen.storyboard */,
 				C2F249512756C8D4005C6024 /* Info.plist */,
 			);
 			path = DigioTest;
@@ -125,6 +121,18 @@
 				C2F249662756C8D5005C6024 /* DigioTestUITestsLaunchTests.swift */,
 			);
 			path = DigioTestUITests;
+			sourceTree = "<group>";
+		};
+		C2F249732756CAD5005C6024 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C2F249492756C8CB005C6024 /* Main.storyboard */,
+				C2F2494E2756C8D4005C6024 /* LaunchScreen.storyboard */,
+				C2F2494C2756C8D4005C6024 /* Assets.xcassets */,
+				C2F249432756C8CB005C6024 /* AppDelegate.swift */,
+				C2F249452756C8CB005C6024 /* SceneDelegate.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
