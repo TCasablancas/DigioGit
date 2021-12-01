@@ -12,7 +12,9 @@ class SectionTitle: UIView {
     // MARK: - UI
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [blueText, greyText])
+        let stackView = UIStackView(arrangedSubviews: [blueTextContainer, greyTextContainer])
+        stackView.distribution = .fillProportionally
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     lazy var blueText: UILabel = {
@@ -28,6 +30,12 @@ class SectionTitle: UIView {
         label.textAlignment = .left
         label.font = UIFont(name: "Outfit-Medium", size: 23.0)
         return label
+    }()
+    let blueTextContainer: UIView = {
+        return UIView(frame: .zero)
+    }()
+    let greyTextContainer: UIView = {
+        return UIView(frame: .zero)
     }()
     
     // MARK: - Init
@@ -45,8 +53,10 @@ class SectionTitle: UIView {
 private extension SectionTitle {
     func layoutBinds() {
         NSLayoutConstraint.activate([
+            blueTextContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 54.0)
         ])
-        
-        embed(subview: stackView)
+        embed(subview: stackView, padding: .init(top: 0, left: 0, bottom: 20, right: 0))
+        blueTextContainer.embed(subview: blueText)
+        greyTextContainer.embed(subview: greyText)
     }
 }

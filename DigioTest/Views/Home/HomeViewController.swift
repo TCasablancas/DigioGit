@@ -8,12 +8,25 @@
 import Foundation
 import UIKit
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
     // MARK: - UI
     
     private(set) lazy var baseView: HomeView = {
         return HomeView()
     }()
+    
+    // MARK: - Properties
+    
+    var viewModel: HomeViewModel
+    
+    init(viewModel: HomeViewModel = HomeViewModel()) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK: - View Lifecycle
     
@@ -21,6 +34,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         layoutBinds()
+        setupBinds()
     }
 }
 
@@ -29,8 +43,11 @@ class HomeViewController: UIViewController {
 private extension HomeViewController {
     func layoutBinds() {
         NSLayoutConstraint.activate([
-            baseView.heightAnchor.constraint(equalToConstant: 40.0)
         ])
-        view.embed(subview: baseView, padding: .init(top: 20, left: 20, bottom: 20, right: 20))
+        view.embed(subview: baseView, padding: .init(top: 80, left: 20, bottom: 20, right: 20))
+    }
+    
+    func setupBinds() {
+        baseView.header.name = viewModel.user
     }
 }
