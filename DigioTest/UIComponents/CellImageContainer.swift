@@ -11,9 +11,6 @@ import UIKit
 final class CellImageContainer: UIView {
     // MARK: - UI
     
-    var containerWidth: CGFloat
-    var containerHeight: CGFloat
-    
     private lazy var container: UIView = {
         let view = UIView(frame: .zero)
         view.layer.cornerRadius = 6
@@ -26,15 +23,12 @@ final class CellImageContainer: UIView {
     }()
     
     lazy var cellImage: UIImageView = {
-        let image = UIImageView()
-        return image
+        return UIImageView()
     }()
     
     // MARK: - Init
     
-    init(containerWidth: CGFloat, containerHeight: CGFloat) {
-        self.containerWidth = containerWidth
-        self.containerHeight = containerHeight
+    init() {
         super.init(frame: .zero)
         layoutBinds()
     }
@@ -46,10 +40,6 @@ final class CellImageContainer: UIView {
 
 extension CellImageContainer {
     func layoutBinds() {
-        NSLayoutConstraint.activate([
-            container.widthAnchor.constraint(equalToConstant: containerWidth),
-            container.heightAnchor.constraint(equalToConstant: containerHeight)
-        ])
         embed(subview: container, padding: .init(top: 10, left: 10, bottom: 10, right: 10))
         container.embed(subview: cellImage)
     }

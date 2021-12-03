@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 final class HomeViewController: UIViewController {
+    
+    var imageName: String?
+    
     // MARK: - UI
     
     private(set) lazy var baseView: HomeView = {
@@ -33,8 +36,7 @@ final class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-        layoutBinds()
+        view = baseView
         setupBinds()
     }
 }
@@ -42,12 +44,6 @@ final class HomeViewController: UIViewController {
 // MARK: - Functions and Binds
 
 extension HomeViewController {
-    func layoutBinds() {
-        NSLayoutConstraint.activate([
-        ])
-        view.embed(subview: baseView, padding: .init(top: 80, left: 20, bottom: 20, right: 20))
-    }
-    
     func setupBinds() {
         baseView.header.name = viewModel.user
         viewModel.requestSpotlight()
@@ -58,12 +54,18 @@ extension HomeViewController {
                       return
                   }
             
-//            self.viewModel.didPresentData(model)
             self.setupMainSlider(model)
+            self.setupCashSection(model)
         }
     }
     
     func setupMainSlider(_ model: HomeModel.Data) {
-        print(model.products.map({ $0.name }))
+        model.products.map({
+            self.imageName = $0.imageURL
+        })
+    }
+    
+    func setupCashSection(_ model: HomeModel.Data) {
+        baseView.cashSection.staticImage.cellImage.image = UIImage(named: "\(model.cash)")
     }
 }
