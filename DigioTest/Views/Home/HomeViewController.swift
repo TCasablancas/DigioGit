@@ -18,8 +18,9 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var viewModel: HomeViewModel
+    var spotlightModel: HomeModel.Data?
     
-    init(viewModel: HomeViewModel = HomeViewModel()) {
+    init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -40,7 +41,7 @@ final class HomeViewController: UIViewController {
 
 // MARK: - Functions and Binds
 
-private extension HomeViewController {
+extension HomeViewController {
     func layoutBinds() {
         NSLayoutConstraint.activate([
         ])
@@ -49,5 +50,20 @@ private extension HomeViewController {
     
     func setupBinds() {
         baseView.header.name = viewModel.user
+        viewModel.requestSpotlight()
+        
+        viewModel .didGetData = { [weak self] in
+            guard let self = self,
+                  let model = self.viewModel.model else {
+                      return
+                  }
+            
+//            self.viewModel.didPresentData(model)
+            self.setupMainSlider(model)
+        }
+    }
+    
+    func setupMainSlider(_ model: HomeModel.Data) {
+        print(model.products.map({ $0.name }))
     }
 }
