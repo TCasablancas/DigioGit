@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1F8035A0F49A97E48831FD413297DAB0"
-               BuildableName = "Pods-DigioTest.framework"
+               BuildableName = "libPods-DigioTest.a"
                BlueprintName = "Pods-DigioTest"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

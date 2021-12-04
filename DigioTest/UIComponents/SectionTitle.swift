@@ -55,7 +55,7 @@ private extension SectionTitle {
         NSLayoutConstraint.activate([
             blueTextContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 54.0)
         ])
-        embed(subview: stackView, padding: .init(top: 0, left: 0, bottom: 20, right: 0))
+        embed(subview: stackView, padding: .init(top: 0, left: 20, bottom: 20, right: 20))
         blueTextContainer.embed(subview: blueText)
         greyTextContainer.embed(subview: greyText)
     }

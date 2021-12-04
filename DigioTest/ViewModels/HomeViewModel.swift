@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Kingfisher
 
 protocol HomeViewModelProtocol {
     var worker: MainWorker? { get }
@@ -35,25 +36,41 @@ class HomeViewModel: HomeViewModelProtocol {
                 case .success(let model):
                     self.model = model
                     self.didGetData?()
-                case .noConnection(let error):
-                    print(error)
+                case .noConnection(let description):
+                    print("Server error timeOut: \(description) \n")
                 case .serverError(let error):
-                    print(error)
-                case .timeOut(let error):
-                    print(error)
+                    let errorData = "\(error.statusCode), -, \(error.msgError)"
+                    print("Server error: \(errorData) \n")
+                    break
+                case .timeOut(let description):
+                    print("Server error noConnection: \(description) \n")
                 }
             }
         }
     }
     
-    func didPresentData(_ model: HomeModel.Data) {
-        self.model = model
+    func setupSpotlight(_ model: HomeModel.Data, imageView: UIImageView) {
         model.spotlight.map {
-            print( $0.name )
+            setupImage(model, image: $0.bannerURL, imageView: imageView)
         }
-        
-        model.products.map({
-            print( $0.description )
-        })
+    }
+    
+    func setupCashSection(_ model: HomeModel.Data, imageView: UIImageView, setupView: Void) {
+        setupImage(model, image: model.cash.bannerURL, imageView: imageView)
+    }
+    
+    func setupProductsSection(_ model: HomeModel.Data, imageView: UIImageView) {
+        model.products.map {
+            setupImage(model, image: $0.imageURL, imageView: imageView)
+        }
+    }
+    
+    private func setupImage(_ model: HomeModel.Data, image: String, imageView: UIImageView) {
+        if let url = URL(string: image) {
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: url)
+        } else {
+            imageView.image = UIImage(named: image)
+        }
     }
 }

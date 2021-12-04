@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A4A9B0C7033465477194DF5 /* Pods_DigioTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 779AD4494063DB768C83DE30 /* Pods_DigioTest.framework */; };
+		0F265BC5F2CA7F3C041E541D /* libPods-DigioTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D851C82761ED3D3A36E5AC /* libPods-DigioTestTests.a */; };
+		4491316A725F4D14C515D196 /* libPods-DigioTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D8938DE2DDA561F601FD36 /* libPods-DigioTest.a */; };
+		83ED2E84D79446929FEF0CE6 /* libPods-DigioTest-DigioTestUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F10DF1266071C855E90145 /* libPods-DigioTest-DigioTestUITests.a */; };
 		C2F249442756C8CB005C6024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249432756C8CB005C6024 /* AppDelegate.swift */; };
 		C2F249462756C8CB005C6024 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249452756C8CB005C6024 /* SceneDelegate.swift */; };
 		C2F249482756C8CB005C6024 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249472756C8CB005C6024 /* ViewController.swift */; };
@@ -39,8 +41,6 @@
 		C2F249A52757FC13005C6024 /* Cash.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249A42757FC13005C6024 /* Cash.swift */; };
 		C2F249AA2757FD1B005C6024 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249A92757FD1B005C6024 /* Response.swift */; };
 		C2F249AC2757FD2D005C6024 /* ServerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249AB2757FD2D005C6024 /* ServerError.swift */; };
-		C46E15778B38647A24C27DB4 /* Pods_DigioTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B05FDBBA6E7431C270FD152 /* Pods_DigioTestTests.framework */; };
-		C96ACF513F808A68E7F66690 /* Pods_DigioTest_DigioTestUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C26F35E0AF30CD8106E1133 /* Pods_DigioTest_DigioTestUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,13 +62,12 @@
 
 /* Begin PBXFileReference section */
 		1AF25C2F57B8BFBE7628FE24 /* Pods-DigioTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTestTests.release.xcconfig"; path = "Target Support Files/Pods-DigioTestTests/Pods-DigioTestTests.release.xcconfig"; sourceTree = "<group>"; };
-		1C26F35E0AF30CD8106E1133 /* Pods_DigioTest_DigioTestUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DigioTest_DigioTestUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF083FA3E268D4CD4E1DAB6 /* Pods-DigioTest-DigioTestUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTest-DigioTestUITests.release.xcconfig"; path = "Target Support Files/Pods-DigioTest-DigioTestUITests/Pods-DigioTest-DigioTestUITests.release.xcconfig"; sourceTree = "<group>"; };
 		475E3D4BC8DAC23049BC6EE2 /* Pods-DigioTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTest.debug.xcconfig"; path = "Target Support Files/Pods-DigioTest/Pods-DigioTest.debug.xcconfig"; sourceTree = "<group>"; };
-		4B05FDBBA6E7431C270FD152 /* Pods_DigioTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DigioTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DD776EC2470E8A981690D19 /* Pods-DigioTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTestTests.debug.xcconfig"; path = "Target Support Files/Pods-DigioTestTests/Pods-DigioTestTests.debug.xcconfig"; sourceTree = "<group>"; };
-		779AD4494063DB768C83DE30 /* Pods_DigioTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DigioTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80F10DF1266071C855E90145 /* libPods-DigioTest-DigioTestUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DigioTest-DigioTestUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B542886E2624144C3240767C /* Pods-DigioTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTest.release.xcconfig"; path = "Target Support Files/Pods-DigioTest/Pods-DigioTest.release.xcconfig"; sourceTree = "<group>"; };
+		C2D8938DE2DDA561F601FD36 /* libPods-DigioTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DigioTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F249402756C8CB005C6024 /* DigioTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigioTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F249432756C8CB005C6024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C2F249452756C8CB005C6024 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +104,7 @@
 		C2F249A92757FD1B005C6024 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		C2F249AB2757FD2D005C6024 /* ServerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerError.swift; sourceTree = "<group>"; };
 		DF481E33DABDF24E88D0BB9A /* Pods-DigioTest-DigioTestUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTest-DigioTestUITests.debug.xcconfig"; path = "Target Support Files/Pods-DigioTest-DigioTestUITests/Pods-DigioTest-DigioTestUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F5D851C82761ED3D3A36E5AC /* libPods-DigioTestTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DigioTestTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A4A9B0C7033465477194DF5 /* Pods_DigioTest.framework in Frameworks */,
+				4491316A725F4D14C515D196 /* libPods-DigioTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C46E15778B38647A24C27DB4 /* Pods_DigioTestTests.framework in Frameworks */,
+				0F265BC5F2CA7F3C041E541D /* libPods-DigioTestTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C96ACF513F808A68E7F66690 /* Pods_DigioTest_DigioTestUITests.framework in Frameworks */,
+				83ED2E84D79446929FEF0CE6 /* libPods-DigioTest-DigioTestUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +138,9 @@
 		ABE40BDDB39417FD940C9FEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				779AD4494063DB768C83DE30 /* Pods_DigioTest.framework */,
-				1C26F35E0AF30CD8106E1133 /* Pods_DigioTest_DigioTestUITests.framework */,
-				4B05FDBBA6E7431C270FD152 /* Pods_DigioTestTests.framework */,
+				C2D8938DE2DDA561F601FD36 /* libPods-DigioTest.a */,
+				80F10DF1266071C855E90145 /* libPods-DigioTest-DigioTestUITests.a */,
+				F5D851C82761ED3D3A36E5AC /* libPods-DigioTestTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -333,7 +333,6 @@
 				C2F2493C2756C8CB005C6024 /* Sources */,
 				C2F2493D2756C8CB005C6024 /* Frameworks */,
 				C2F2493E2756C8CB005C6024 /* Resources */,
-				0979F61058E2D82A4569F1A1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -371,7 +370,6 @@
 				C2F2495C2756C8D5005C6024 /* Sources */,
 				C2F2495D2756C8D5005C6024 /* Frameworks */,
 				C2F2495E2756C8D5005C6024 /* Resources */,
-				AD4F406A2EE8D47FEA6F06E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -457,23 +455,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0979F61058E2D82A4569F1A1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DigioTest/Pods-DigioTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DigioTest/Pods-DigioTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DigioTest/Pods-DigioTest-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2B33D3A1EB03C904A276077E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,23 +497,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AD4F406A2EE8D47FEA6F06E3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DigioTest-DigioTestUITests/Pods-DigioTest-DigioTestUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DigioTest-DigioTestUITests/Pods-DigioTest-DigioTestUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DigioTest-DigioTestUITests/Pods-DigioTest-DigioTestUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B837AD40E8C94A54C198650A /* [CP] Check Pods Manifest.lock */ = {

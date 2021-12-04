@@ -49,23 +49,22 @@ extension HomeViewController {
         viewModel.requestSpotlight()
         
         viewModel .didGetData = { [weak self] in
-            guard let self = self,
-                  let model = self.viewModel.model else {
-                      return
-                  }
+            guard
+                let self = self,
+                let model = self.viewModel.model else {
+                    return
+                }
             
-            self.setupMainSlider(model)
-            self.setupCashSection(model)
+            self.viewModel.setupSpotlight(model,
+                                          imageView: self.baseView.mainSection.staticImage.cellImage)
+            self.viewModel.setupCashSection(model,
+                                            imageView: self.baseView.cashSection.staticImage.cellImage,
+                                            setupView: self.baseView.cashSection.setupStaticImage())
+            self.viewModel.setupProductsSection(model,
+                                                imageView: self.baseView.productsSection.staticImage.cellImage)
+            model.spotlight.map {
+                self.baseView.mainSection.staticImage.cellImage.image = UIImage(named: $0.bannerURL)
+            }
         }
-    }
-    
-    func setupMainSlider(_ model: HomeModel.Data) {
-        model.products.map({
-            self.imageName = $0.imageURL
-        })
-    }
-    
-    func setupCashSection(_ model: HomeModel.Data) {
-        baseView.cashSection.staticImage.cellImage.image = UIImage(named: "\(model.cash)")
     }
 }

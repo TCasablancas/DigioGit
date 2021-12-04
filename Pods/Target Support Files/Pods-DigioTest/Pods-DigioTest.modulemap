@@ -1,4 +1,4 @@
-framework module Pods_DigioTest {
+module Pods_DigioTest {
   umbrella header "Pods-DigioTest-umbrella.h"
 
   export *

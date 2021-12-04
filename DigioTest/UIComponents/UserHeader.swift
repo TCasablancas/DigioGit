@@ -52,7 +52,7 @@ private extension UserHeader {
             userImg.widthAnchor.constraint(equalToConstant: 30),
             userImg.heightAnchor.constraint(equalToConstant: 30)
         ])
-        embed(subview: stackView)
+        embed(subview: stackView, padding: .init(top: 0, left: 20, bottom: 0, right: 20))
         userNameContainer.embed(subview: userName, padding: .init(top: 0, left: 10, bottom: 0, right: 0))
         
     }
