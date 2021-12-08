@@ -6,22 +6,27 @@
 //
 
 import Foundation
+import Kingfisher
 import UIKit
 
-final class CellImageContainer: UIView {
+public class CellImageContainer: UICollectionViewCell {
+    private var model: Spotlight?
+    
     // MARK: - UI
     
-    private lazy var container: UIView = {
+    public lazy var container: UIView = {
         let view = UIView(frame: .zero)
         view.layer.cornerRadius = 6
-        view.layer.shadowRadius = 10
-        view.layer.shadowOpacity = 0.25
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.2, height: 0.9)
         view.backgroundColor = .lightGray
+        view.layer.shadowRadius = 4
+        view.layer.shadowOpacity = 0.15
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
         return view
     }()
-    
+    private lazy var cellImageContainer: UIView = {
+        return UIView(frame: .zero)
+    }()
     lazy var cellImage: UIImageView = {
         let view = UIImageView()
         view.clipsToBounds = true
@@ -32,8 +37,9 @@ final class CellImageContainer: UIView {
     
     // MARK: - Init
     
-    init() {
-        super.init(frame: .zero)
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
         layoutBinds()
     }
     
@@ -45,21 +51,31 @@ final class CellImageContainer: UIView {
 extension CellImageContainer {
     func layoutBinds() {
         self.addSubview(container)
-        container.addSubview(cellImage)
+        container.addSubview(cellImageContainer)
+        cellImageContainer.addSubview(cellImage)
         
         NSLayoutConstraint.activate([
             container.heightAnchor.constraint(equalToConstant: 120),
             container.trailingAnchor.constraint(equalTo: trailingAnchor),
             container.leadingAnchor.constraint(equalTo: leadingAnchor),
             
-            cellImage.topAnchor.constraint(equalTo: container.topAnchor),
-            cellImage.bottomAnchor.constraint(equalTo: container.bottomAnchor),
-            cellImage.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-            cellImage.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+            cellImageContainer.centerXAnchor.constraint(equalTo: container.centerXAnchor),
+            cellImageContainer.centerYAnchor.constraint(equalTo: container.centerYAnchor)
         ])
         
         embed(subview: container,
               padding: .init(top: 10, left: 10, bottom: 10, right: 10))
-        container.embed(subview: cellImage)
+        container.embed(subview: cellImageContainer)
+        cellImageContainer.embed(subview: cellImage,
+                                 padding: .init(top: 0, left: 0, bottom: 0, right: 0))
+    }
+    
+    func setupCell(_ model: String) {
+        if let url = URL(string:  model) {
+            self.cellImage.kf.indicatorType = .activity
+            self.cellImage.kf.setImage(with: url)
+        } else {
+            self.cellImage.image = UIImage(named: "")
+        }
     }
 }

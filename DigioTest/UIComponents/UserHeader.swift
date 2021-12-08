@@ -11,8 +11,6 @@ import UIKit
 final class UserHeader: UIView {
     // MARK: - UI
     
-    var name: String?
-    
     private lazy var stackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [userImg, userNameContainer])
         return stackView
@@ -27,7 +25,6 @@ final class UserHeader: UIView {
         let label = UILabel()
         label.textColor = UIColor(hexString: "#00226A")
         label.font = UIFont(name: "Outfit-Medium", size: 16.0)
-        label.text = "Olá, \(name)"
         return label
     }()
     let userNameContainer: UIView = {
@@ -46,14 +43,13 @@ final class UserHeader: UIView {
     }
 }
 
-private extension UserHeader {
+extension UserHeader {
     func layoutBinds() {
         NSLayoutConstraint.activate([
             userImg.widthAnchor.constraint(equalToConstant: 30),
             userImg.heightAnchor.constraint(equalToConstant: 30)
         ])
-        embed(subview: stackView, padding: .init(top: 0, left: 20, bottom: 0, right: 20))
+        embed(subview: stackView, padding: .init(top: 0, left: 10, bottom: 0, right: 20))
         userNameContainer.embed(subview: userName, padding: .init(top: 0, left: 10, bottom: 0, right: 0))
-        
     }
 }

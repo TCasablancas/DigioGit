@@ -36,7 +36,7 @@ class MainWorker: MainWorkerProtocol {
                 }
                 
             } catch let parsingError {
-                print("Error", parsingError)
+                print("Sorray... The data could not be parsed for some reason.", parsingError)
             }
         }
         task.resume()

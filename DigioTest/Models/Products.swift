@@ -8,7 +8,7 @@
 import Foundation
 
 struct Products: Codable {
-    let name: String
-    let imageURL: String
-    let description: String
+    var name: String
+    var imageURL: String
+    var description: String
 }

@@ -12,6 +12,7 @@ protocol HomeViewModelProtocol {
     var worker: MainWorker? { get }
     var model: HomeModel.Data? { get set }
     var didGetData: (() -> Void)? { get set }
+    var user: String? { get set }
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -19,13 +20,14 @@ class HomeViewModel: HomeViewModelProtocol {
     var model: HomeModel.Data?
     
     var didGetData: (() -> Void)?
-    var user: String = "Thiago"
+    var user: String?
     
     init(worker: MainWorker = MainWorker()) {
         self.worker = worker
+        user = "Olá, Thiago"
     }
     
-    func requestSpotlight() {
+    func requestMainData() {
         self.worker?.getData { [weak self] (response) in
             guard let self = self else {
                 return
@@ -49,17 +51,15 @@ class HomeViewModel: HomeViewModelProtocol {
         }
     }
     
-    func setupSpotlight(_ model: HomeModel.Data, imageView: UIImageView) {
-        model.spotlight.map {
-            setupImage(model, image: $0.bannerURL, imageView: imageView)
-        }
+    func setupSpotlight(_ model: [Spotlight]) {
+        model.map{ $0.bannerURL }
     }
     
-    func setupCashSection(_ model: HomeModel.Data, imageView: UIImageView, setupView: Void) {
+    func setupCashSection(_ model: HomeModel.Data, imageView: UIImageView) {
         setupImage(model, image: model.cash.bannerURL, imageView: imageView)
     }
     
-    func setupProductsSection(_ model: HomeModel.Data, imageView: UIImageView) {
+    func setupProductsSection(_ model: HomeModel.Data, imageView: UIImageView, setupView: Void) {
         model.products.map {
             setupImage(model, image: $0.imageURL, imageView: imageView)
         }

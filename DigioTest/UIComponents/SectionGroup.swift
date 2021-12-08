@@ -6,17 +6,24 @@
 //
 
 import Foundation
+import Kingfisher
 import UIKit
+
+private let reuseIdentifier = "Cell"
 
 final class SectionGroup: UIView {
     // MARK: - Properties
-    
-    private let cellWidth = UIScreen.main.bounds.width - 80.0
+    var viewController: UIViewController?
+    var imageURL: String?
+    var productTitle: String?
+    var productDescription: String?
+    var model = [HomeModel.Data]()
+    var hasSlider: Bool
     
     // MARK: - UI
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [sectionTitle, staticImageContainer, mainScrollView])
+        let stackView = UIStackView()
         stackView.axis = .vertical
         return stackView
     }()
@@ -27,18 +34,23 @@ final class SectionGroup: UIView {
         let view = UIView(frame: .zero)
         view.backgroundColor = .gray
         view.layer.cornerRadius = 8
-        view.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 120).isActive = true
         view.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width - 30.0).isActive = true
         return view
     }()
     
     /// Main Static Image Container
+    lazy var actionButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(showProduct), for: .touchUpInside)
+        return button
+    }()
     lazy var staticImage: CellImageContainer = {
-        return CellImageContainer()
+        let view = CellImageContainer()
+        return view
     }()
     lazy var staticImageContainer: UIView = {
-        let view = UIView(frame: .zero)
-        return view
+        return UIView(frame: .zero)
     }()
     
     /// Products Image Container
@@ -50,6 +62,19 @@ final class SectionGroup: UIView {
         let view = UIView(frame: .zero)
         view.backgroundColor = .gray
         return view
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let collection = UICollectionView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 120),
+                                          collectionViewLayout: flowLayout())
+        collection.register(CellImageContainer.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        collection.showsHorizontalScrollIndicator = false
+        collection.delegate = self
+        collection.dataSource = self
+        collection.layer.cornerRadius = 8
+        collection.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        return collection
     }()
     
     lazy var mainScrollView: UIScrollView = {
@@ -69,15 +94,57 @@ final class SectionGroup: UIView {
         return stackView
     }()
     
+    lazy var imageView: UIImageView = {
+        return UIImageView()
+    }()
+    
+    let data = ["https://s3-sa-east-1.amazonaws.com/digio-exame/recharge_banner.png",
+                "https://s3-sa-east-1.amazonaws.com/digio-exame/uber_banner.png"]
+    
     // MARK: - Init
     
-    init() {
+    init(hasSlider: Bool) {
+        self.hasSlider = hasSlider
         super.init(frame: .zero)
         layoutBinds()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension SectionGroup: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! CellImageContainer
+        let item = data[indexPath.row]
+        
+        cell.setupCell(item)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.showProduct()
+    }
+    
+    @objc func showProduct() {
+        guard
+            let image = imageURL,
+            let description = productDescription,
+            let title = productTitle else {
+            return
+        }
+        let productView = ProductViewController(imageURL: image, productTitle: title, productDescription: description)
+        self.viewController?.navigationController?.pushViewController(productView, animated: true)
     }
 }
 
@@ -89,30 +156,19 @@ extension SectionGroup {
         NSLayoutConstraint.activate([
             stackView.heightAnchor.constraint(equalToConstant: 180),
             staticImage.heightAnchor.constraint(equalToConstant: 120),
-            staticImageContainer.widthAnchor.constraint(equalTo: widthAnchor),
             productImageContainer.heightAnchor.constraint(equalToConstant: 120),
             productImageContainer.widthAnchor.constraint(equalToConstant: 120)
         ])
         
         embed(subview: stackView)
         mainScrollView.embed(subview: scrollViewStack,
-                             padding: .init(top: 0, left: 30, bottom: 0, right: 30))
+                             padding: .init(top: 0, left: 0, bottom: 0, right: 0))
+        staticImageContainer.embed(subview: actionButton)
         staticImageContainer.embed(subview: staticImage)
-    }
-    
-    func setupStaticImage() {
-        productImageContainer.embed(subview: productImage)
-    }
-    
-    func setupArray(with view: UIView) {
-        var cards: [UIView] = []
-        cards.append(viewContainer)
         
-        for card in cards {
-            scrollViewStack.addArrangedSubview(card)
-            card.widthAnchor.constraint(equalToConstant: cellWidth).isActive = true
-            card.topAnchor.constraint(equalTo: scrollViewStack.topAnchor).isActive = true
-        }
+        stackView.addArrangedSubview(sectionTitle)
+        stackView.addArrangedSubview(mainScrollView)
+        stackView.addArrangedSubview(hasSlider ? staticImageContainer : collectionView)
     }
     
     func displayTitle(_ show: Bool) {
@@ -126,5 +182,15 @@ extension SectionGroup {
         if !show {
             viewContainer.embed(subview: staticImageContainer)
         }
+    }
+    
+    private func flowLayout() -> UICollectionViewFlowLayout {
+        let flow = UICollectionViewFlowLayout()
+        flow.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        flow.itemSize = CGSize(width: UIScreen.main.bounds.width - 60, height: 150.0)
+        flow.scrollDirection = .horizontal
+        flow.minimumLineSpacing = 0
+        flow.minimumInteritemSpacing = 20
+        return flow
     }
 }

@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 
 final class HomeViewController: UIViewController {
-    
-    var imageName: String?
-    
     // MARK: - UI
     
     private(set) lazy var baseView: HomeView = {
@@ -21,7 +18,7 @@ final class HomeViewController: UIViewController {
     // MARK: - Properties
     
     var viewModel: HomeViewModel
-    var spotlightModel: HomeModel.Data?
+    var products: [Products]?
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -45,25 +42,30 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController {
     func setupBinds() {
-        baseView.header.name = viewModel.user
-        viewModel.requestSpotlight()
-        
-        viewModel .didGetData = { [weak self] in
+        self.baseView.header.userName.text = viewModel.user
+        viewModel.requestMainData()
+        viewModel.didGetData = { [weak self] in
             guard
                 let self = self,
                 let model = self.viewModel.model else {
                     return
                 }
+            self.products = model.products
             
-            self.viewModel.setupSpotlight(model,
-                                          imageView: self.baseView.mainSection.staticImage.cellImage)
-            self.viewModel.setupCashSection(model,
-                                            imageView: self.baseView.cashSection.staticImage.cellImage,
-                                            setupView: self.baseView.cashSection.setupStaticImage())
-            self.viewModel.setupProductsSection(model,
-                                                imageView: self.baseView.productsSection.staticImage.cellImage)
-            model.spotlight.map {
-                self.baseView.mainSection.staticImage.cellImage.image = UIImage(named: $0.bannerURL)
+            self.viewModel.setupSpotlight(model.spotlight)
+            self.viewModel.setupCashSection(model, imageView: self.baseView.cashSection.staticImage.cellImage)
+            self.baseView.mainSection.model = [model]
+            
+            self.baseView.mainSection.viewController = self
+            self.baseView.productsSection.viewController = self
+            
+            model.products.map {
+                self.baseView.mainSection.imageURL = $0.imageURL
+                self.baseView.productsSection.imageURL = $0.imageURL
+                self.baseView.productsSection.productDescription = $0.description
+                self.baseView.productsSection.productTitle = $0.name
+                
+                self.baseView.productsSection.products = model.products
             }
         }
     }

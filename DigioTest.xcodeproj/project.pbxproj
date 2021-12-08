@@ -10,6 +10,8 @@
 		0F265BC5F2CA7F3C041E541D /* libPods-DigioTestTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5D851C82761ED3D3A36E5AC /* libPods-DigioTestTests.a */; };
 		4491316A725F4D14C515D196 /* libPods-DigioTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D8938DE2DDA561F601FD36 /* libPods-DigioTest.a */; };
 		83ED2E84D79446929FEF0CE6 /* libPods-DigioTest-DigioTestUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80F10DF1266071C855E90145 /* libPods-DigioTest-DigioTestUITests.a */; };
+		C26A14C0275B1F6C003195AE /* ProductsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26A14BF275B1F6C003195AE /* ProductsView.swift */; };
+		C2AF0DBB275F9FFB0063C965 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2AF0DBA275F9FFB0063C965 /* UIImage+Extension.swift */; };
 		C2F249442756C8CB005C6024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249432756C8CB005C6024 /* AppDelegate.swift */; };
 		C2F249462756C8CB005C6024 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249452756C8CB005C6024 /* SceneDelegate.swift */; };
 		C2F249482756C8CB005C6024 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2F249472756C8CB005C6024 /* ViewController.swift */; };
@@ -67,6 +69,8 @@
 		6DD776EC2470E8A981690D19 /* Pods-DigioTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTestTests.debug.xcconfig"; path = "Target Support Files/Pods-DigioTestTests/Pods-DigioTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		80F10DF1266071C855E90145 /* libPods-DigioTest-DigioTestUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DigioTest-DigioTestUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B542886E2624144C3240767C /* Pods-DigioTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DigioTest.release.xcconfig"; path = "Target Support Files/Pods-DigioTest/Pods-DigioTest.release.xcconfig"; sourceTree = "<group>"; };
+		C26A14BF275B1F6C003195AE /* ProductsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsView.swift; sourceTree = "<group>"; };
+		C2AF0DBA275F9FFB0063C965 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		C2D8938DE2DDA561F601FD36 /* libPods-DigioTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DigioTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F249402756C8CB005C6024 /* DigioTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DigioTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2F249432756C8CB005C6024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -235,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				C2F249772756CCCB005C6024 /* Home */,
-				C2F2497A2756CD44005C6024 /* Product */,
+				C2F2497A2756CD44005C6024 /* ProductDetail */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -245,17 +249,18 @@
 			children = (
 				C2F249782756CCE1005C6024 /* HomeViewController.swift */,
 				C2F2497D2756CE3D005C6024 /* HomeView.swift */,
+				C26A14BF275B1F6C003195AE /* ProductsView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
 		};
-		C2F2497A2756CD44005C6024 /* Product */ = {
+		C2F2497A2756CD44005C6024 /* ProductDetail */ = {
 			isa = PBXGroup;
 			children = (
 				C2F2497B2756CD94005C6024 /* ProductViewController.swift */,
 				C2F249802756CED8005C6024 /* ProductView.swift */,
 			);
-			path = Product;
+			path = ProductDetail;
 			sourceTree = "<group>";
 		};
 		C2F249822756CEEA005C6024 /* UIComponents */ = {
@@ -294,6 +299,7 @@
 			children = (
 				C2F2498E2756D5B9005C6024 /* Color+Extension.swift */,
 				C2F249902756DDB0005C6024 /* View+Extension.swift */,
+				C2AF0DBA275F9FFB0063C965 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,7 +324,6 @@
 				6DD776EC2470E8A981690D19 /* Pods-DigioTestTests.debug.xcconfig */,
 				1AF25C2F57B8BFBE7628FE24 /* Pods-DigioTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -531,6 +536,7 @@
 				C2F249AC2757FD2D005C6024 /* ServerError.swift in Sources */,
 				C2F2499F2757F1D1005C6024 /* MainWorker.swift in Sources */,
 				C2F2499327579DF9005C6024 /* UserHeader.swift in Sources */,
+				C2AF0DBB275F9FFB0063C965 /* UIImage+Extension.swift in Sources */,
 				C2F249482756C8CB005C6024 /* ViewController.swift in Sources */,
 				C2F2498F2756D5B9005C6024 /* Color+Extension.swift in Sources */,
 				C2F249992757B533005C6024 /* CellImageContainer.swift in Sources */,
@@ -548,6 +554,7 @@
 				C2F2497C2756CD95005C6024 /* ProductViewController.swift in Sources */,
 				C2F249AA2757FD1B005C6024 /* Response.swift in Sources */,
 				C2F2499B2757C1EB005C6024 /* SectionGroupCell.swift in Sources */,
+				C26A14C0275B1F6C003195AE /* ProductsView.swift in Sources */,
 				C2F249A32757FBF9005C6024 /* Products.swift in Sources */,
 				C2F249792756CCE1005C6024 /* HomeViewController.swift in Sources */,
 			);
