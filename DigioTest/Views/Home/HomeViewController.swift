@@ -60,6 +60,9 @@ extension HomeViewController {
             self.baseView.productsSection.viewController = self
             
             model.products.map {
+                
+                self.baseView.productsSection.products = model.products
+                
                 self.baseView.mainSection.imageURL = $0.imageURL
                 self.baseView.productsSection.imageURL = $0.imageURL
                 self.baseView.productsSection.productDescription = $0.description

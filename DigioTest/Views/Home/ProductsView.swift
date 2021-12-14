@@ -13,7 +13,7 @@ private let reuseIdentifier = "Cell"
 final class ProductsView: UIView {
     // MARK: - Properties
     
-    var products: [Products]?
+    var products = [Products]()
     
     var viewController: UIViewController?
     var imageURL: String?
@@ -86,19 +86,16 @@ extension ProductsView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     @objc func showProduct() {
-        guard let products = self.products else {
-            return
-        }
+//        products.map {
+//            navigateToView(image: $0.imageURL, name: $0.name, description: $0.description)
+//        }
         
-        var myArray: [Products] = []
-
-       myArray.append(contentsOf: products)
-        
-        var itemImage = myArray.flatMap({ return $0.imageURL })
-        
-        let productView = ProductViewController(imageURL: itemImage, productTitle: "", productDescription: "")
-        self.viewController?.navigationController?.pushViewCont˜roller(productView, animated: true)
-        
+        navigateToView(image: self.imageURL ?? "", name: self.productTitle ?? "", description: self.productDescription ?? "")
+    }
+    
+    private func navigateToView(image: String, name: String, description: String) {
+        let productView = ProductViewController(imageURL: image, productTitle: name, productDescription: description)
+        self.viewController?.navigationController?.pushViewController(productView, animated: true)
     }
 }
 
