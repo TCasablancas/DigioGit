@@ -86,10 +86,6 @@ extension ProductsView: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     @objc func showProduct() {
-//        products.map {
-//            navigateToView(image: $0.imageURL, name: $0.name, description: $0.description)
-//        }
-        
         navigateToView(image: self.imageURL ?? "", name: self.productTitle ?? "", description: self.productDescription ?? "")
     }
     
